@@ -14,16 +14,16 @@ print(sc._conf.get('spark.driver.memory'))
 
 # ----------------------- Functions -----------------------
 
-# This function will take all the possible combinations (of 2) in each transaction and add them to the map 
+# This function will take all the possible combinations  in each transaction and add them to the map 
 # Sorting each transaction alphabetically is critical to make sure all combinations are the same and you don't end up with (a,b) and (b,a)
 def createMaps(transactions, size):
-    doublesMap = []
+    comboMap = []
     for transaction in transactionList:
         sortedTrans = sorted(transaction)
         allCombos = itertools.combinations(sortedTrans, size)
         for combo in allCombos:
-            doublesMap.append( (combo, 1) )
-    return doublesMap
+            comboMap.append( (combo, 1) )
+    return comboMap
 
 
 # This function does a lot, idk a better way to do this though.
@@ -73,6 +73,7 @@ Triples confidence
 [I1^I2]=>[I3] //confidence = sup(I1^I2^I3)/sup(I1^I2) 
 [I1^I3]=>[I2] //confidence = sup(I1^I2^I3)/sup(I1^I3) 
 [I2^I3]=>[I1] //confidence = sup(I1^I2^I3)/sup(I2^I3)
+
 """
 
 
